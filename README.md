@@ -1,10 +1,24 @@
 # Daykodee Supplies
 
-Franchisee-facing portal for [Daykodee](https://daykodee.com/), to be hosted at **https://supplies.daykodee.com/**.
+Franchisee-facing portal for Daykodee, to be hosted at **https://supplies.daykodee.com/**.
 
 This is a **completely separate site** from the public store. Approved Family Affair franchise owners sign in with Wix Members (email/password or Google). The site sends their member token to the franchise catalog API on the existing DigitalOcean server (`sam-erp-cloud-1`). That server checks that the member is approved and has the Franchisees label, then returns the hidden franchise products from the Daykodee Wix store. Checkout stays on Wix; the installed checkout lock blocks anyone who is not a labeled franchisee.
 
-**This repository is a seed only.** It has the plan, the board, the Stitch mockups, and a build brief for a coding agent. The app itself has not been written yet.
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+Open http://localhost:5173/login. Add `?demo=1` (or set `VITE_DEMO=1`) to review the catalog, product, and cart with sample data and no Wix client. Copy `.env.example` to `.env` and set `VITE_WIX_CLIENT_ID` when the supplies OAuth client exists (SUP-002).
+
+```bash
+npm test
+npm run build
+```
+
+`npm run build` writes `dist/` for a root host and copies `index.html` to `dist/404.html`. For the GitHub Pages project URL, build with `GITHUB_PAGES=true` so assets use the `/daykodee-supplies/` base. Do not add a `CNAME` file.
 
 ## Docs for the coding agent
 

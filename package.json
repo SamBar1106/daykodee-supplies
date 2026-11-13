@@ -1,0 +1,25 @@
+{
+  "name": "daykodee-supplies",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test src/lib/*.test.js"
+  },
+  "dependencies": {
+    "@wix/ecom": "^1.0.2672",
+    "@wix/members": "^1.0.541",
+    "@wix/redirects": "^1.0.134",
+    "@wix/sdk": "^1.21.18",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.3.0",
+    "vite": "^8.3.8"
+  }
+}
