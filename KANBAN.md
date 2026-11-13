@@ -1,7 +1,7 @@
 # Daykodee Supplies: KANBAN
 
 Policy 05: ED keeps this board current and routes each ticket to the right worker. Samuel approves merges, spending, sending, posting, filing and schema changes.
-Last updated: Nov 13, 2026, 12:30 PM ET
+Last updated: Nov 13, 2026, 12:42 PM ET
 
 Public GitHub: https://github.com/SamBar1106/daykodee-supplies
 This copy must stay public (GitHub Pages, free plan). **No secrets ever** go in the repo.
@@ -28,10 +28,11 @@ Policy also wants a private Gitea source of truth at `https://desktop-2p168ve.ta
 
 - [x] SUP-001: Franchisee portal built from the Stitch mockups (React + Vite). Merged to main via GitHub PR #1 on Nov 12, 2026, 10:52 PM ET (`51e16da`). Routes, Wix Members PKCE, franchise catalog statuses, Wix eCom checkout, and `?demo=1` sample catalog are included. `npm run build` writes `dist/` plus `404.html`. No `CNAME` file in the repo. Live custom-domain go-live still waits on SUP-005.
 - [ ] SUP-006: Product descriptions sanitized with DOMPurify and rendered as formatted typography on catalog cards and the product page. Assignee: Codex (gpt-6.1-sol). Branch `ed/SUP-006`, draft PR #2, targets `main`. No merge until Samuel says so. Not part of this branch.
+- [ ] SUP-007: Build catalog tabs from Wix category ids/names returned by the franchise-catalog API, instead of guessing a group from product-name keywords. Fallback tab: Other. Products can appear in multiple categories. Assignee: Codex (gpt-6.1-sol). Branch `ed/SUP-007` from `origin/main`. `npm test`: 9 passed, 0 failed. `npm run build`: passed. Keep `ed/SUP-006` / PR #2 untouched. Ticket: `.ed/inbox/SUP-007.md`. No merge until Samuel says so. Live tabs also need the franchise-api SUP-007 deploy after that merge.
 
 ## In Progress
 
-- [ ] SUP-007: Build catalog tabs from Wix category ids/names returned by the franchise-catalog API, instead of guessing a group from product-name keywords. Fallback tab: Other. Assignee: Codex (gpt-6.1-sol). Branch `ed/SUP-007` from `origin/main`. Keep `ed/SUP-006` / PR #2 untouched. Ticket: `.ed/inbox/SUP-007.md`. No merge until Samuel says so.
+- (none)
 
 ## Waiting on Samuel
 

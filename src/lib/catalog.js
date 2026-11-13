@@ -1,5 +1,3 @@
-import { CATEGORIES } from "./config.js";
-
 export function parseCatalogResponse(status, body) {
   if (status === 401) return { status: "unauthorized" };
   if (status === 403) return { status: "forbidden" };
@@ -10,16 +8,16 @@ export function parseCatalogResponse(status, body) {
 }
 
 export function categoryOf(item) {
-  const text = `${item?.name || ""} ${item?.description || ""}`.toLowerCase();
-  if (/rest mat|nap mat|cot\b/.test(text)) return "Rest time";
-  if (/disinfect|wipe|sanitiz|sanitiser|sanitizer/.test(text)) return "Sanitation";
-  if (/outdoor|sidewalk|chalk|playground/.test(text)) return "Outdoor";
-  return "Classroom";
+  const categories = Array.isArray(item?.categories) ? item.categories : [];
+  const names = categories
+    .map((category) => typeof category?.name === "string" ? category.name.trim() : "")
+    .filter(Boolean);
+  return names.length ? [...new Set(names)] : ["Other"];
 }
 
 export function categoriesFor(items) {
-  const present = new Set(items.map((item) => categoryOf(item)));
-  return CATEGORIES.filter((category) => category === "All" || present.has(category));
+  // Keep API names in first-seen catalog order, with All always first.
+  return [...new Set(["All", ...items.flatMap(categoryOf)])];
 }
 
 export function subtitleOf(item) {
