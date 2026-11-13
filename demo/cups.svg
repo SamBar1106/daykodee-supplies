@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f4f6f8"/>
+  <rect x="40" y="36" width="720" height="528" rx="28" fill="#ffffff"/>
+  
+    <g transform="translate(120 180)"><path d="M30 40 h70 l-10 180 h-50 z" fill="#2f6adf"/><rect x="28" y="18" width="74" height="28" rx="8" fill="#dfe5ef"/><rect x="48" y="8" width="34" height="16" rx="6" fill="#2f6adf"/></g><g transform="translate(280 180)"><path d="M30 40 h70 l-10 180 h-50 z" fill="#3aa34a"/><rect x="28" y="18" width="74" height="28" rx="8" fill="#dfe5ef"/><rect x="48" y="8" width="34" height="16" rx="6" fill="#3aa34a"/></g><g transform="translate(440 180)"><path d="M30 40 h70 l-10 180 h-50 z" fill="#e23b3b"/><rect x="28" y="18" width="74" height="28" rx="8" fill="#dfe5ef"/><rect x="48" y="8" width="34" height="16" rx="6" fill="#e23b3b"/></g><g transform="translate(600 180)"><path d="M30 40 h70 l-10 180 h-50 z" fill="#f08a1a"/><rect x="28" y="18" width="74" height="28" rx="8" fill="#dfe5ef"/><rect x="48" y="8" width="34" height="16" rx="6" fill="#f08a1a"/></g>
+  
+</svg>
