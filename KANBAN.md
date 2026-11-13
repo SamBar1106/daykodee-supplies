@@ -1,7 +1,7 @@
 # Daykodee Supplies: KANBAN
 
 Policy 05: ED keeps this board current and routes each ticket to the right worker. Samuel approves merges, spending, sending, posting, filing and schema changes.
-Last updated: Nov 13, 2026
+Last updated: Nov 13, 2026, 6:56 AM ET
 
 Public GitHub: https://github.com/SamBar1106/daykodee-supplies
 This copy must stay public (GitHub Pages, free plan). **No secrets ever** go in the repo.
@@ -26,11 +26,11 @@ Policy also wants a private Gitea source of truth at `https://desktop-2p168ve.ta
 
 ## In review
 
-- [ ] SUP-001: Franchisee portal built from the Stitch mockups (React + Vite). Routes, Wix Members PKCE, franchise catalog statuses, Wix eCom checkout, and `?demo=1` sample catalog are in the branch. `npm run build` writes `dist/` plus `404.html`. Not merged. No `CNAME`, no custom domain, `noindex` stays on. Preview hosting is separate. Remaining before a live catalog on the Pages URL: SUP-002 (OAuth client ID) and a CORS allowlist entry for `https://sambar1106.github.io`.
+- [x] SUP-001: Franchisee portal built from the Stitch mockups (React + Vite). Merged to main via GitHub PR #1 on Nov 12, 2026, 10:52 PM ET (`51e16da`). Routes, Wix Members PKCE, franchise catalog statuses, Wix eCom checkout, and `?demo=1` sample catalog are included. `npm run build` writes `dist/` plus `404.html`. No `CNAME` file in the repo. Live custom-domain go-live still waits on SUP-005.
 
 ## In Progress
 
-- (none)
+- [ ] SUP-006: Product descriptions show raw HTML tags (for example `<p>TEST ITEM - not for sale</p>`). Render as formatted text sanitized with DOMPurify (preferred) or strip to plain text. Blank product images are expected (test products have no photos) and must not be changed. Assignee: Codex (gpt-6.1-sol). Started Nov 13, 2026. Branch `ed/SUP-006`, PR will target `main` because PR #1 was already merged. No merge until Samuel says so.
 
 ## Waiting on Samuel
 
