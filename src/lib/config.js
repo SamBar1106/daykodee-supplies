@@ -15,5 +15,3 @@ export const DEMO_FLAG_KEY = "daykodee.demo";
 export const OAUTH_DATA_KEY = "daykodee.oauthData";
 export const PKCE_KEY = "daykodee.pkce";
 export const DEMO_CART_KEY = "daykodee.demoCart";
-
-export const CATEGORIES = ["All", "Classroom", "Rest time", "Sanitation", "Outdoor"];

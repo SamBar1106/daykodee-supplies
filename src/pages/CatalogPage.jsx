@@ -10,7 +10,7 @@ export function CatalogPage() {
   const [filter, setFilter] = useState("All");
   const [supportOpen, setSupportOpen] = useState(false);
   const categories = useMemo(() => categoriesFor(session.items), [session.items]);
-  const visible = session.items.filter((item) => filter === "All" || categoryOf(item) === filter);
+  const visible = session.items.filter((item) => filter === "All" || categoryOf(item).includes(filter));
 
   if (!session.authReady) {
     return (
