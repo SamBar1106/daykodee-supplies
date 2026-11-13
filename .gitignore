@@ -1,0 +1,17 @@
+# Dependencies and build output
+node_modules/
+dist/
+.vite/
+*.local
+
+# Env files may later hold only the public Wix client ID, but keep them out of git anyway.
+# Use .env.example as the template.
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
