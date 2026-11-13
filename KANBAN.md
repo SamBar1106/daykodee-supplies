@@ -27,10 +27,11 @@ Policy also wants a private Gitea source of truth at `https://desktop-2p168ve.ta
 ## In review
 
 - [x] SUP-001: Franchisee portal built from the Stitch mockups (React + Vite). Merged to main via GitHub PR #1 on Nov 12, 2026, 10:52 PM ET (`51e16da`). Routes, Wix Members PKCE, franchise catalog statuses, Wix eCom checkout, and `?demo=1` sample catalog are included. `npm run build` writes `dist/` plus `404.html`. No `CNAME` file in the repo. Live custom-domain go-live still waits on SUP-005.
+- [ ] SUP-006: Product descriptions sanitized with DOMPurify and rendered as formatted typography on catalog cards and the product page. Plain-text newlines still work. Box verification: `npm test` 10 passed, 0 failed; `npm run build` passed (296 modules). Assignee: Codex (gpt-6.1-sol). Branch `ed/SUP-006`, targets `main` because PR #1 was already merged. No merge until Samuel says so.
 
 ## In Progress
 
-- [ ] SUP-006: Product descriptions show raw HTML tags (for example `<p>TEST ITEM - not for sale</p>`). Render as formatted text sanitized with DOMPurify (preferred) or strip to plain text. Blank product images are expected (test products have no photos) and must not be changed. Assignee: Codex (gpt-6.1-sol). Started Nov 13, 2026. Branch `ed/SUP-006`, PR will target `main` because PR #1 was already merged. No merge until Samuel says so.
+- (none)
 
 ## Waiting on Samuel
 

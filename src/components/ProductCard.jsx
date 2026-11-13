@@ -4,6 +4,7 @@ import { formatMoney } from "../lib/money.js";
 import { imageUrl } from "../lib/media.js";
 import { subtitleOf, unitPrice } from "../lib/catalog.js";
 import { useSession } from "../session.jsx";
+import { ProductDescription } from "./ProductDescription.jsx";
 
 export function ProductCard({ item, showSample }) {
   const session = useSession();
@@ -33,7 +34,7 @@ export function ProductCard({ item, showSample }) {
         <h3>
           <Link to={`/product/${item.id}`}>{item.name || "Franchise item"}</Link>
         </h3>
-        {subtitleOf(item) ? <p>{subtitleOf(item)}</p> : null}
+        <ProductDescription text={subtitleOf(item)} className="product-subtitle" />
         <div className="product-buy">
           <p>
             <span>Franchise price</span>
