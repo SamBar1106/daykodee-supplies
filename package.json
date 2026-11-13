@@ -14,12 +14,14 @@
     "@wix/members": "^1.0.541",
     "@wix/redirects": "^1.0.134",
     "@wix/sdk": "^1.21.18",
+    "dompurify": "^3.4.17",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router-dom": "^7.18.5"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.3.0",
+    "jsdom": "^31.0.1",
     "vite": "^8.3.8"
   }
 }
