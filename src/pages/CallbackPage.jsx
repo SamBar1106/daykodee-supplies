@@ -4,9 +4,11 @@ import { Shell } from "../components/Shell.jsx";
 import { finishOAuthCallback } from "../lib/authFlow.js";
 import { isDemoMode } from "../lib/demo.js";
 import { getWixClient } from "../lib/wixClient.js";
+import { useSession } from "../session.jsx";
 
 export function CallbackPage() {
   const navigate = useNavigate();
+  const { refresh: refreshPasswordSession } = useSession();
   const [error, setError] = useState("");
   const demoPreview = isDemoMode() && !window.location.search.includes("code=");
 
@@ -20,7 +22,7 @@ export function CallbackPage() {
         return;
       }
       try {
-        await finishOAuthCallback(wix);
+        await finishOAuthCallback(wix, refreshPasswordSession);
         if (!cancelled) navigate("/", { replace: true });
       } catch (caught) {
         if (!cancelled) {
@@ -32,7 +34,7 @@ export function CallbackPage() {
     return () => {
       cancelled = true;
     };
-  }, [demoPreview, navigate]);
+  }, [demoPreview, navigate, refreshPasswordSession]);
 
   return (
     <Shell screen="callback">

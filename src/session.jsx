@@ -108,6 +108,7 @@ export function SessionProvider({ children }) {
   const [busy, setBusy] = useState(false);
 
   const loadLive = useCallback(async () => {
+    setAuthReady(false);
     const wix = getWixClient();
     if (!wix) {
       setSignedIn(false);
@@ -321,6 +322,7 @@ export function SessionProvider({ children }) {
       cartCount: cartLines.length,
       cartError,
       busy,
+      refresh: loadLive,
       addToCart,
       changeQuantity,
       removeFromCart,
@@ -338,6 +340,7 @@ export function SessionProvider({ children }) {
       cartLines,
       cartError,
       busy,
+      loadLive,
       addToCart,
       changeQuantity,
       removeFromCart,
