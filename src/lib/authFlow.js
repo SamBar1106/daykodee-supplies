@@ -161,9 +161,14 @@ async function finishPkceQuery(wix) {
   return true;
 }
 
-export async function finishOAuthCallback(wix) {
+export async function finishOAuthCallback(wix, refreshPasswordSession) {
   const pkceDone = await finishPkceQuery(wix);
-  if (pkceDone) return;
+  if (pkceDone) {
+    // The provider can finish its mount-time access check before this exchange.
+    // Recheck with the applied member tokens before entering the catalog.
+    await refreshPasswordSession();
+    return;
+  }
   const raw = sessionStorage.getItem(OAUTH_DATA_KEY);
   if (!raw) {
     throw new Error("This page finishes a sign-in that was started on the login screen.");
