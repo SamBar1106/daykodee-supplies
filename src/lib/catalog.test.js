@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { parseCatalogResponse, categoryOf, optionSummary, specRows, subtitleOf } from "./catalog.js";
+import { parseCatalogResponse, categoryOf, categoriesFor, optionSummary, specRows, subtitleOf } from "./catalog.js";
+import { demoCatalogItems } from "./demoCatalog.js";
 import { formatMoney, toAmount } from "./money.js";
 import { imageUrl, productImages } from "./media.js";
 import { codeChallengeS256 } from "./pkce.js";
@@ -44,12 +45,66 @@ test("image helper accepts a URL string or a Wix media object", () => {
   );
 });
 
-test("product copy and groups stay derived from the API fields", () => {
+test("API category names determine every group regardless of product keywords", () => {
+  assert.deepEqual(categoryOf({
+    name: "Classroom rest mat wipes",
+    description: "Outdoor sidewalk chalk",
+    categories: [{ id: "kitchen", name: "Kitchen & Food Service" }],
+  }), ["Kitchen & Food Service"]);
+  assert.deepEqual(categoryOf({
+    name: "Outdoor sidewalk chalk, bucket of 50",
+    categories: [
+      { id: "outdoor", name: "Outdoor & Playground" },
+      { id: "art", name: " Classroom & Art Supplies " },
+      { id: "duplicate", name: "Outdoor & Playground" },
+      { id: "nameless" },
+    ],
+  }), ["Outdoor & Playground", "Classroom & Art Supplies"]);
+});
+
+test("items without usable category names belong to Other", () => {
+  for (const item of [
+    {},
+    { categories: [] },
+    { categories: null },
+    { categories: "Outdoor" },
+    { categories: [null, {}, { name: "" }, { name: "   " }, { name: 42 }] },
+  ]) {
+    assert.deepEqual(categoryOf(item), ["Other"]);
+  }
+});
+
+test("tabs include only present groups in first-seen order after All", () => {
+  const items = [
+    { categories: [{ id: "kitchen", name: "Kitchen & Food Service" }] },
+    { categories: [
+      { id: "outdoor", name: "Outdoor & Playground" },
+      { id: "art", name: "Classroom & Art Supplies" },
+    ] },
+    { categories: [{ id: "kitchen-duplicate", name: "Kitchen & Food Service" }] },
+  ];
+  const namedTabs = ["All", "Kitchen & Food Service", "Outdoor & Playground", "Classroom & Art Supplies"];
+  assert.deepEqual(categoriesFor([]), ["All"]);
+  assert.deepEqual(categoriesFor(items), namedTabs);
+  assert.deepEqual(categoriesFor([...items, { categories: [] }, {}]), [...namedTabs, "Other"]);
+  assert.deepEqual(categoriesFor([{}, ...items]), ["All", "Other", ...namedTabs.slice(1)]);
+});
+
+test("demo items supply API categories including multiple memberships and Other", () => {
+  const items = demoCatalogItems();
+  assert.ok(items.every((item) => Array.isArray(item.categories)));
+  assert.deepEqual(categoriesFor(items), [
+    "All", "Classroom & Art Supplies", "Other", "Kitchen & Food Service", "Outdoor & Playground",
+  ]);
+  const chalk = items.find((item) => item.name.includes("sidewalk chalk"));
+  assert.deepEqual(categoryOf(chalk), ["Outdoor & Playground", "Classroom & Art Supplies"]);
+});
+
+test("product copy stays derived from the API fields", () => {
   const item = {
     name: "Child-size rest mats, 10-pack",
     description: "10-pack heavy-duty vinyl\n\nWashable classroom mats.",
   };
-  assert.equal(categoryOf(item), "Rest time");
   assert.equal(subtitleOf(item), "10-pack heavy-duty vinyl");
   assert.equal(
     optionSummary({

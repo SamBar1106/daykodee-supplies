@@ -12,12 +12,17 @@ const ids = {
   chalk: "99999999-9999-4999-8999-999999999999",
 };
 
-function item(id, name, description, price, image, sku, choices) {
+const classroom = { id: "demo-classroom", name: "Classroom & Art Supplies" };
+const kitchen = { id: "demo-kitchen", name: "Kitchen & Food Service" };
+const outdoor = { id: "demo-outdoor", name: "Outdoor & Playground" };
+
+function item(id, name, description, price, image, sku, choices, categories) {
   return {
     id,
     name,
     slug: name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
     description,
+    categories,
     currency: "USD",
     price,
     compareAtPrice: null,
@@ -56,6 +61,7 @@ export function demoCatalogItems() {
         { name: "Pack", value: "12-bottle case" },
         { name: "Size", value: "16 oz bottles" },
       ],
+      [classroom],
     ),
     item(
       ids.mats,
@@ -70,6 +76,7 @@ export function demoCatalogItems() {
         { name: "Material", value: "Commercial-grade heavy-duty phthalate-free vinyl and dense foam core" },
         { name: "Care", value: "Wipe clean with standard childcare-grade disinfectant sanitizers" },
       ],
+      [],
     ),
     item(
       ids.scissors,
@@ -79,6 +86,7 @@ export function demoCatalogItems() {
       "demo/scissors.svg",
       "DK-SCI-24",
       [{ name: "Pack", value: "24 with caddy" }],
+      [classroom],
     ),
     item(
       ids.paper,
@@ -88,6 +96,7 @@ export function demoCatalogItems() {
       "demo/paper.svg",
       "DK-PPR-500",
       [{ name: "Pack", value: "500 sheets" }],
+      [classroom],
     ),
     item(
       ids.glue,
@@ -97,6 +106,7 @@ export function demoCatalogItems() {
       "demo/glue.svg",
       "DK-GLU-60",
       [{ name: "Pack", value: "60-count" }],
+      [classroom],
     ),
     item(
       ids.blocks,
@@ -106,6 +116,7 @@ export function demoCatalogItems() {
       "demo/blocks.svg",
       "DK-BLK-SET",
       [{ name: "Pack", value: "Classroom set" }],
+      [classroom],
     ),
     item(
       ids.wipes,
@@ -115,6 +126,7 @@ export function demoCatalogItems() {
       "demo/wipes.svg",
       "DK-WPE-6",
       [{ name: "Pack", value: "6 canisters" }],
+      [],
     ),
     item(
       ids.cups,
@@ -124,6 +136,7 @@ export function demoCatalogItems() {
       "demo/cups.svg",
       "DK-CUP-12",
       [{ name: "Pack", value: "12-pack" }],
+      [kitchen],
     ),
     item(
       ids.chalk,
@@ -133,6 +146,7 @@ export function demoCatalogItems() {
       "demo/chalk.svg",
       "DK-CHK-50",
       [{ name: "Pack", value: "Bucket of 50" }],
+      [outdoor, classroom],
     ),
   ];
 }

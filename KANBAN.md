@@ -1,7 +1,7 @@
 # Daykodee Supplies: KANBAN
 
 Policy 05: ED keeps this board current and routes each ticket to the right worker. Samuel approves merges, spending, sending, posting, filing and schema changes.
-Last updated: Nov 13, 2026, 6:56 AM ET
+Last updated: Nov 16, 2026, 6:25 PM CT
 
 Public GitHub: https://github.com/SamBar1106/daykodee-supplies
 This copy must stay public (GitHub Pages, free plan). **No secrets ever** go in the repo.
@@ -28,6 +28,7 @@ Policy also wants a private Gitea source of truth at `https://desktop-2p168ve.ta
 
 - [x] SUP-001: Franchisee portal built from the Stitch mockups (React + Vite). Merged to main via GitHub PR #1 on Nov 12, 2026, 10:52 PM ET (`51e16da`). Routes, Wix Members PKCE, franchise catalog statuses, Wix eCom checkout, and `?demo=1` sample catalog are included. `npm run build` writes `dist/` plus `404.html`. No `CNAME` file in the repo. Live custom-domain go-live still waits on SUP-005.
 - [ ] SUP-006: Product descriptions sanitized with DOMPurify and rendered as formatted typography on catalog cards and the product page. Plain-text newlines still work. Box verification: `npm test` 10 passed, 0 failed; `npm run build` passed (296 modules). Assignee: Codex (gpt-6.1-sol). Branch `ed/SUP-006`, targets `main` because PR #1 was already merged. No merge until Samuel says so.
+- [ ] SUP-008: Email/password sign-in now refreshes session/access after the first-attempt PKCE callback so a correct login lands in the catalog (or pending). Google sign-in was already working on the first try and is unchanged. Assignee: Codex (gpt-6.1-sol). Branch `ed/SUP-008`, draft PR #4, targets `main`. `npm test`: 16 passed, 0 failed. `npm run build`: passed. Keep `ed/SUP-006` / PR #2 untouched. Ticket: `.ed/inbox/SUP-008.md`. Result: `.ed/outbox/SUP-008.result.md`. No merge until Samuel says so.
 
 ## In Progress
 
@@ -40,4 +41,5 @@ Policy also wants a private Gitea source of truth at `https://desktop-2p168ve.ta
 
 ## Done
 
+- [x] SUP-007: Catalog tabs are built from Wix category ids/names returned by the franchise-catalog API, with an Other fallback. Merged to main via GitHub PR #3 on Nov 14, 2026 (`1a38c5e`). Live site tabs confirmed after the franchise-api deploy.
 - [x] Repo seed: public GitHub `SamBar1106/daykodee-supplies` with README, this board, BUILD-BRIEF.md, logo, and Stitch mockups. Nov 12, 2026, 9:03 PM CT. No app code, no Pages custom domain, no secrets.
