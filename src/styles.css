@@ -426,7 +426,18 @@ input {
 .price-row { display: flex; align-items: baseline; gap: 8px; color: var(--muted); }
 .price-row strong { color: var(--blue); font-size: 2rem; }
 .price-row s { color: #98a0ae; }
-.description { white-space: pre-wrap; line-height: 1.6; margin-top: 16px; }
+.product-description { white-space: pre-wrap; line-height: 1.6; }
+.product-description p + p { margin-top: 0.75em; }
+.product-description ul, .product-description ol { padding-left: 1.5em; }
+.product-subtitle {
+  color: var(--muted);
+  font-size: 0.92rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.description { margin-top: 16px; }
 .variant-picker { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .variant-picker button { border: 1px solid var(--line); background: var(--white); border-radius: 999px; padding: 8px 12px; }
 .variant-picker button.is-active { border-color: var(--blue); color: var(--blue); }

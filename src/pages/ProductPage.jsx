@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { Shell } from "../components/Shell.jsx";
+import { ProductDescription } from "../components/ProductDescription.jsx";
 import { bodyOf, inStock, optionSummary, specRows, unitPrice, variantLabel } from "../lib/catalog.js";
 import { formatMoney, toAmount } from "../lib/money.js";
 import { productImages } from "../lib/media.js";
@@ -92,7 +93,7 @@ export function ProductPage() {
               <span>/ {optionSummary(variant)}</span>
             </p>
             <p className="price-note">Franchise price. {session.demo ? "Sample item for mockup only." : "Your approved rate."}</p>
-            {bodyOf(item) ? <p className="description">{bodyOf(item)}</p> : null}
+            <ProductDescription text={bodyOf(item)} className="description" />
             {variants.length > 1 ? (
               <div className="variant-picker" role="radiogroup" aria-label="Options">
                 {variants.map((option, index) => (

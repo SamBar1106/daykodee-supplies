@@ -1,3 +1,5 @@
+import { hasDescriptionHtml } from "./description.js";
+
 export function parseCatalogResponse(status, body) {
   if (status === 401) return { status: "unauthorized" };
   if (status === 403) return { status: "forbidden" };
@@ -23,6 +25,8 @@ export function categoriesFor(items) {
 export function subtitleOf(item) {
   const text = String(item?.description || "").trim();
   if (!text) return "";
+  // Keep markup intact for the sanitizer/renderer; cards clamp the preview.
+  if (hasDescriptionHtml(text)) return text;
   const first = text.split("\n")[0].trim();
   if (first.length > 0 && first.length <= 96) return first;
   return "";
@@ -31,6 +35,7 @@ export function subtitleOf(item) {
 export function bodyOf(item) {
   const text = String(item?.description || "").trim();
   if (!text) return "";
+  if (hasDescriptionHtml(text)) return text;
   const lines = text.split("\n");
   const first = lines[0].trim();
   if (first.length > 0 && first.length <= 96 && lines.length > 1) {
