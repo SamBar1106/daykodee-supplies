@@ -22,7 +22,6 @@ Policy also wants a private Gitea source of truth at `https://desktop-2p168ve.ta
 ## Planned
 
 - [ ] SUP-002: Create a dedicated Wix Headless OAuth client for supplies (PKCE, site `1ffbfadb-2877-4455-b124-c1535486eab0`) with redirect `https://supplies.daykodee.com/callback` and preview `http://localhost:5173/callback`. Put the public client ID in `VITE_WIX_CLIENT_ID`. Add that client ID to the franchise API allowlist (`WIX_PORTAL_CLIENT_IDS` on sam-erp-cloud-1).
-- [ ] SUP-003: GoDaddy DNS `CNAME` `supplies` → `sambar1106.github.io`. Do not change existing `daykodee.com` apex A records or the `www` CNAME. Do not add a `CNAME` file or enable the GitHub Pages custom domain until SUP-005. Samuel approved this DNS change on Nov 12, 2026, ~8:57 PM CT; the record has not been created yet.
 
 ## In review
 
@@ -35,9 +34,10 @@ Policy also wants a private Gitea source of truth at `https://desktop-2p168ve.ta
 ## Waiting on Samuel
 
 - [ ] SUP-004: Preview review by Samuel. Local demo is ready (`npm run dev`, then `?demo=1`). The GitHub Pages project URL is still a separate deploy. Do not go live.
-- [ ] SUP-005: Go-live of https://supplies.daykodee.com/ (Pages custom domain, `CNAME` file, Enforce HTTPS after the certificate). **Blocked on Samuel’s explicit OK.** Do not publish or make the site live without that OK.
 
 ## Done
+- [x] SUP-003: GoDaddy DNS `CNAME` `supplies` → `sambar1106.github.io` created (Samuel approved Nov 12, 2026). Existing apex A records and `www` CNAME unchanged.
+- [x] SUP-005: Go-live of https://supplies.daykodee.com/ on GitHub Pages (gh-pages branch, custom domain, HTTPS enforced, noindex). Live since Nov 12, 2026, 10:52 PM ET with Samuel’s OK.
 - [x] SUP-008: Email/password sign-in refreshes session/access after the first-attempt PKCE callback, so a correct login lands in the catalog (or pending) on the first try. Google sign-in unchanged. Merged Nov 15, 2026, 7:31 AM CT via GitHub PR #4 (`f88c676`), Samuel OK. Deployed to gh-pages `f284561`. `npm test` 16 passed.
 
 - [x] SUP-006: Product descriptions sanitized with DOMPurify and rendered as formatted text on catalog cards and the product page (no raw HTML tags). Merged Nov 16, 2026, 6:18 PM CT via GitHub PR #2 (`49a3f11`); Samuel OK Nov 16, 2026, 6:01 PM CT. Deployed to gh-pages `73671ff` (production build from `49a3f11`); live check on supplies.daykodee.com passed. `npm test` 21 passed, 0 failed.
