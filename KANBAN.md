@@ -27,7 +27,6 @@ Policy also wants a private Gitea source of truth at `https://desktop-2p168ve.ta
 ## In review
 
 - [x] SUP-001: Franchisee portal built from the Stitch mockups (React + Vite). Merged to main via GitHub PR #1 on Nov 12, 2026, 10:52 PM ET (`51e16da`). Routes, Wix Members PKCE, franchise catalog statuses, Wix eCom checkout, and `?demo=1` sample catalog are included. `npm run build` writes `dist/` plus `404.html`. No `CNAME` file in the repo. Live custom-domain go-live still waits on SUP-005.
-- [ ] SUP-008: Email/password sign-in now refreshes session/access after the first-attempt PKCE callback so a correct login lands in the catalog (or pending). Google sign-in was already working on the first try and is unchanged. Assignee: Codex (gpt-6.1-sol). Branch `ed/SUP-008`, draft PR #4, targets `main`. `npm test`: 16 passed, 0 failed. `npm run build`: passed. Keep `ed/SUP-006` / PR #2 untouched. Ticket: `.ed/inbox/SUP-008.md`. Result: `.ed/outbox/SUP-008.result.md`. No merge until Samuel says so.
 
 ## In Progress
 
@@ -39,6 +38,8 @@ Policy also wants a private Gitea source of truth at `https://desktop-2p168ve.ta
 - [ ] SUP-005: Go-live of https://supplies.daykodee.com/ (Pages custom domain, `CNAME` file, Enforce HTTPS after the certificate). **Blocked on Samuel’s explicit OK.** Do not publish or make the site live without that OK.
 
 ## Done
+- [x] SUP-008: Email/password sign-in refreshes session/access after the first-attempt PKCE callback, so a correct login lands in the catalog (or pending) on the first try. Google sign-in unchanged. Merged Nov 15, 2026, 7:31 AM CT via GitHub PR #4 (`f88c676`), Samuel OK. Deployed to gh-pages `f284561`. `npm test` 16 passed.
+
 - [x] SUP-006: Product descriptions sanitized with DOMPurify and rendered as formatted text on catalog cards and the product page (no raw HTML tags). Merged Nov 16, 2026, 6:18 PM CT via GitHub PR #2 (`49a3f11`); Samuel OK Nov 16, 2026, 6:01 PM CT. Deployed to gh-pages `73671ff` (production build from `49a3f11`); live check on supplies.daykodee.com passed. `npm test` 21 passed, 0 failed.
 
 - [x] SUP-007: Catalog tabs are built from Wix category ids/names returned by the franchise-catalog API, with an Other fallback. Merged to main via GitHub PR #3 on Nov 14, 2026 (`1a38c5e`). Live site tabs confirmed after the franchise-api deploy.
